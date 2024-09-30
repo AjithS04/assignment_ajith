@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .game-container {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .game-container h1 {
+            text-align: center;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #3e8e41;
+        }
+
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Number Guessing Game</h1>
+        <p>Guess a number between 1 and 100:</p>
+        <input type="number" id="guess" class="input-field">
+        <button class="submit-btn" onclick="playGame()">Submit</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        let numberToGuess = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function playGame() {
+            let userGuess = document.getElementById('guess').value;
+            attempts++;
+
+            if (userGuess == numberToGuess) {
+                document.getElementById('result').innerHTML = `Congratulations! You guessed the number in ${attempts} attempts.`;
+                document.getElementById('guess').disabled = true;
+            } else if (userGuess < numberToGuess) {
+                document.getElementById('result').innerHTML = 'Too low! Try again.';
+            } else {
+                document.getElementById('result').innerHTML = 'Too high! Try again.';
+            }
+        }
+    </script>
+</body>
+</html>
